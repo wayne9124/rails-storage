@@ -1,0 +1,17 @@
+<%= form_with(model: service, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <%= form.file_field :images, multiple: true %><br>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
