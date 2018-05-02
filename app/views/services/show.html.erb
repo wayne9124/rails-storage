@@ -10,5 +10,9 @@
   <%= @service.description %>
 </p>
 
+<% @service.images.each do |img| %>
+  <%= image_tag img, size: "300x300" %>
+<% end %>
+
 <%= link_to 'Edit', edit_service_path(@service) %> |
 <%= link_to 'Back', services_path %>

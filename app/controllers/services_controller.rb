@@ -1,13 +1,11 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
+  http_basic_authenticate_with name: "admin", password: "admin"
 
   # GET /services
   # GET /services.json
   def index
     @services = Service.all.with_attached_images
-    MQTT::Client.connect('test.mosquitto.org') do |c|
-      c.publish('message', @services.first.name)
-    end
   end
 
   # GET /services/1
@@ -28,21 +26,16 @@ class ServicesController < ApplicationController
   # POST /services.json
   def create
     @service = Service.create! service_params
-    @service.images.attach(params[:service][:images])
     redirect_to @service
   end
 
   # PATCH/PUT /services/1
   # PATCH/PUT /services/1.json
   def update
-    respond_to do |format|
-      if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
-        format.json { render :show, status: :ok, location: @service }
-      else
-        format.html { render :edit }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
-      end
+    if @service.update(service_params)
+      redirect_to @service
+    else
+      render :edit
     end
   end
 
@@ -64,6 +57,6 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:name, :description)
+      params.require(:service).permit(:name, :description, images: [])
     end
 end
