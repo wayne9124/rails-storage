@@ -17,3 +17,5 @@
 - MQTT
 
 - 行事曆(`gem 'fullcalendar-rails'`, `gem 'momentjs-rails'`)，移動行程可更新(AJAX)
+
+- Service's controller 有呼叫 Job 的 ItemJob(測試抓法拍屋資料)(Nokogiri練習)(regex練習)
