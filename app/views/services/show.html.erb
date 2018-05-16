@@ -11,7 +11,9 @@
 </p>
 
 <% @service.images.each do |img| %>
-  <%= image_tag img, size: "300x300" %>
+  <% cache img do %>
+    <%= image_tag url_for(img.variant(resize: "300x300")) %>
+  <% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_service_path(@service) %> |

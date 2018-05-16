@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'securerandom'
+
+75.times do
+  Post.create(
+    :title => "My Post #{SecureRandom.hex(2)}",
+    :author => SecureRandom.hex(6),
+    :body => SecureRandom.hex(32)
+  )
+end

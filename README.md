@@ -1,27 +1,19 @@
-# README
+# 環境
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby 2.3.4
 
-Things you may want to cover:
+* Ruby 5.2.0
 
-* Ruby version
+* System MacOS
 
-* System dependencies
+* Database mysql
 
-* Configuration
+* Services Redis(5.2以後的很簡單(撒花))
 
-* Database creation
+# 主要測試之技術
 
-* Database initialization
+- Active Storage (含 `mini_magick`)
 
-* How to run the test suite
+- MQTT
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# rails-storage
-# rails-storage
-# rails-storage
+- 行事曆(`gem 'fullcalendar-rails'`, `gem 'momentjs-rails'`)，移動行程可更新(AJAX)
